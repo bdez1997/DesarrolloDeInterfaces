@@ -1,0 +1,28 @@
+package view;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class VentanaPrincipal extends JFrame{
+	public VentanaPrincipal() {
+		iniciarVentana();
+	}
+
+	public void iniciarVentana() {
+		setTitle("Ventana");
+		setBounds(100,100,500,300);
+		crearComponentes();
+		setVisible(true);
+		
+	}
+
+	private void crearComponentes() {
+		JMenu Editor = new JMenu("Editor");
+		JMenuItem Colores=new JMenuItem("Colores");
+		JMenuItem salir=new JMenuItem("Salir");
+	}
+	
+}
+
