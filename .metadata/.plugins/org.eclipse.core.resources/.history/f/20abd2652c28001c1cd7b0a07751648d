@@ -73,16 +73,10 @@ public class FrmPrincipal extends JFrame {
 					lblPalabraRandom.setForeground(Color.blue);
 					lblPalabraRandom.setText("Correcto");
 					iOption=JOptionPane.showConfirmDialog(null,"¿Quieres volver a realizarlo?","¿Te atreves?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					if (iOption==0) {
-						 bPalabra = controller.WindowCtrl.generarNum();
-					}
 				}else {
 					lblPalabraRandom.setForeground(Color.red);
 					lblPalabraRandom.setText(RespuestaCorrecta);			
 					iOption=JOptionPane.showConfirmDialog(null,"¿Quieres volver a realizarlo?","¿Te atreves?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					if (iOption==0) {
-						 bPalabra = controller.WindowCtrl.generarNum();
-					}
 				}
 				}
 				

@@ -10,9 +10,10 @@
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="controller.EjercicioCtrl"/>
-    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="model.Languages"/>
     <fullyQualifiedTypeName name="controller.WindowCtrl"/>
     <fullyQualifiedTypeName name="javax.swing.text.AttributeSet.ColorAttribute"/>
+    <fullyQualifiedTypeName name="javax.swing.JColorChooser"/>
+    <fullyQualifiedTypeName name="model.Languages"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>
