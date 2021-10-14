@@ -11,4 +11,5 @@ public class WindowCtrl {
 		byte iNumero=(byte) (Math.random()*10);
 		return iNumero;
 	}
+	
 }

@@ -48,53 +48,62 @@ public class FrmPrincipal extends JFrame {
 
 	public void crearComponentes() {
 		model.Languages.cargarLenguajes();
-		
-		JLabel lblNewLabel = new JLabel("HELLO");
+
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 50));
-		lblNewLabel.setBounds(135, 31, 175, 59);
+		lblNewLabel.setBounds(65, 30, 286, 82);
 		contentPane.add(lblNewLabel);
-		
-		lblPalabraRandom = new JLabel();
-		
-		lblPalabraRandom.setBounds(62, 136, 187, 20);
-		lblPalabraRandom.setText(model.Languages.sEsp.get(bPalabra));
-		contentPane.add(lblPalabraRandom);
-		
-		
-		
+
+		lblNewLabel.setText(model.Languages.sEsp.get(bPalabra));
+
+		JLabel lblRespuesta = new JLabel();
+		lblRespuesta.setBounds(58, 214, 189, 49);
+		contentPane.add(lblRespuesta);
+
 		JButton btnPlay = new JButton("PLAY");
+
+		btnPlay.addActionListener(e -> {
+			
+		});
+		
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String respuesta=textField2.getText();
-				String RespuestaCorrecta=model.Languages.sEng.get(bPalabra);
-				int iOption=0;
-				while(iOption==0) {
-				if(respuesta.equalsIgnoreCase(model.Languages.sEng.get(bPalabra))) {
-					lblPalabraRandom.setForeground(Color.blue);
-					lblPalabraRandom.setText("Correcto");
-					iOption=JOptionPane.showConfirmDialog(null,"¿Quieres volver a realizarlo?","¿Te atreves?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					if (iOption==0) {
-						 bPalabra = controller.WindowCtrl.generarNum();
-					}
-				}else {
-					lblPalabraRandom.setForeground(Color.red);
-					lblPalabraRandom.setText(RespuestaCorrecta);			
-					iOption=JOptionPane.showConfirmDialog(null,"¿Quieres volver a realizarlo?","¿Te atreves?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-					if (iOption==0) {
-						 bPalabra = controller.WindowCtrl.generarNum();
+				String respuesta = textField2.getText();
+				String RespuestaCorrecta = model.Languages.sEng.get(bPalabra);
+				int iOption = 0;
+				while (iOption == 0) {
+					if (respuesta.equalsIgnoreCase(model.Languages.sEng.get(bPalabra))) {
+						lblRespuesta.setForeground(Color.blue);
+						lblRespuesta.setText("Correcto");
+						iOption = JOptionPane.showConfirmDialog(null, "¿Quieres volver a realizarlo?", "¿Te atreves?",
+								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+						if (iOption == 0) {
+							bPalabra = controller.WindowCtrl.generarNum();
+						} else {
+							System.exit(0);
+						}
+					} else {
+						lblRespuesta.setForeground(Color.red);
+						lblRespuesta.setText(RespuestaCorrecta);
+						iOption = JOptionPane.showConfirmDialog(null, "¿Quieres volver a realizarlo?", "¿Te atreves?",
+								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+						if (iOption == 0) {
+							bPalabra = controller.WindowCtrl.generarNum();
+						} else {
+							System.exit(0);
+						}
 					}
 				}
-				}
-				
+
 			}
 		});
 		btnPlay.setBounds(274, 135, 77, 23);
-		contentPane.add(btnPlay); 
-		
+		contentPane.add(btnPlay);
+
 		textField2 = new JTextField();
-		textField2.setBounds(62, 203, 187, 20);
+		textField2.setBounds(58, 136, 187, 20);
 		contentPane.add(textField2);
 		textField2.setColumns(10);
-		
+
 	}
 }
