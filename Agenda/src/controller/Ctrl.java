@@ -4,7 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.ListModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.Personas;
@@ -12,17 +14,21 @@ import view.Principal;
 
 public class Ctrl {
 	
+	public static ArrayList<Personas>listaContactos=new ArrayList<Personas>();
+	public static File fileName;
 	public static void init() {
-		File fchContacts = new File("AgendaDeContactos.txt");
-		ArrayList<Personas>listaContactos =EscribirEnPersona(fchContacts);
-		listaContactos.forEach(s->System.out.println(s));
+		
+		
 		new view.Principal();
 		
+		
 	}
+	
 
 	public static void abrirFichero() {
 		JFileChooser seleccionarFch = new JFileChooser();
 		int iFichero;
+		String fichero = null;
 		seleccionarFch.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		FileNameExtensionFilter imgFilter = new FileNameExtensionFilter("Selector de imágenes", "jpg", "png", "bmp",
 				"gif", "cr2");
@@ -33,24 +39,23 @@ public class Ctrl {
 		iFichero = seleccionarFch.showOpenDialog(null);
 
 		if (iFichero != JFileChooser.CANCEL_OPTION) {
-			File fileName = seleccionarFch.getSelectedFile();
+			fileName = seleccionarFch.getSelectedFile();
 			if (fileName != null && !fileName.getName().equals("")) {
 				System.out.println(fileName.getAbsolutePath());
-
+				EscribirEnPersona();
 			}
 
 		}
 
 	}
 	
-	public static ArrayList<Personas> EscribirEnPersona(File fchAfgenda) {
+	public static ArrayList<Personas> EscribirEnPersona() {
 		
-		ArrayList<Personas> listaContactos = new ArrayList<Personas>();
 		String sNombre;
 		String sNumTelefono;
 		try {
 			
-			FileReader fch1 =new FileReader(fchAfgenda);
+			FileReader fch1 =new FileReader(fileName);
 			BufferedReader bfLectura =new BufferedReader(fch1);
 			String sSeparador ="#";
 			String sLinea=bfLectura.readLine();
@@ -59,18 +64,18 @@ public class Ctrl {
 				StringTokenizer st = new StringTokenizer(sLinea,sSeparador);
 				
 				sNombre=st.nextToken();
-				bfLectura.readLine();
+				
 				sNumTelefono=st.nextToken();
+				sLinea=bfLectura.readLine();
 				
-				listaContactos.add(new Personas(sNombre,Integer.parseInt(sNumTelefono)));
 				
-				
-				fch1.close();
-				bfLectura.close();
+				listaContactos.add(new Personas(sNombre,Integer.parseInt(sNumTelefono)));		
 				
 				
 			}
-			
+			fch1.close();
+			bfLectura.close();
+			System.out.println(listaContactos);
 		} catch (FileNotFoundException e) {
 			System.err.println("No se ha encontrado el fichero");
 		}catch(IOException e) {
@@ -81,6 +86,15 @@ public class Ctrl {
 		
 	}
 
+	public static void meterNombres() {
+		
+		DefaultListModel<String>sModel=new DefaultListModel<String>();
+		for (int i = 0; i < controller.Ctrl.EscribirEnPersona().size(); i++) {
+			sModel.addElement(controller.Ctrl.EscribirEnPersona().get(i).getsNombre());
+		}
+		view.Principal.listaDeNumeros.setModel(sModel);
+		
+	}
 
 	
 }
