@@ -13,17 +13,14 @@ import model.Personas;
 import view.Principal;
 
 public class Ctrl {
-	
-	public static ArrayList<Personas>listaContactos=new ArrayList<Personas>();
+
+	public static ArrayList<Personas> listaContactos ;
 	public static File fileName;
+
 	public static void init() {
-		
-		
+
 		new view.Principal();
-		
-		
 	}
-	
 
 	public static void abrirFichero() {
 		JFileChooser seleccionarFch = new JFileChooser();
@@ -42,59 +39,57 @@ public class Ctrl {
 			fileName = seleccionarFch.getSelectedFile();
 			if (fileName != null && !fileName.getName().equals("")) {
 				System.out.println(fileName.getAbsolutePath());
-				EscribirEnPersona();
+				listaContactos=EscribirEnPersona();
+				meterNombres();
+				
 			}
 
 		}
 
 	}
-	
+
 	public static ArrayList<Personas> EscribirEnPersona() {
-		
+		ArrayList<Personas>personita=new ArrayList<Personas>();
 		String sNombre;
 		String sNumTelefono;
 		try {
-			
-			FileReader fch1 =new FileReader(fileName);
-			BufferedReader bfLectura =new BufferedReader(fch1);
-			String sSeparador ="#";
-			String sLinea=bfLectura.readLine();
-			
-			while (sLinea!=null) {
-				StringTokenizer st = new StringTokenizer(sLinea,sSeparador);
-				
-				sNombre=st.nextToken();
-				
-				sNumTelefono=st.nextToken();
-				sLinea=bfLectura.readLine();
-				
-				
-				listaContactos.add(new Personas(sNombre,Integer.parseInt(sNumTelefono)));		
-				
-				
+
+			FileReader fch1 = new FileReader(fileName);
+			BufferedReader bfLectura = new BufferedReader(fch1);
+			String sSeparador = "#";
+			String sLinea = bfLectura.readLine();
+
+			while (sLinea != null) {
+				StringTokenizer st = new StringTokenizer(sLinea, sSeparador);
+
+				sNombre = st.nextToken();
+
+				sNumTelefono = st.nextToken();
+				sLinea = bfLectura.readLine();
+
+				personita.add(new Personas(sNombre, sNumTelefono));
+
 			}
 			fch1.close();
 			bfLectura.close();
 			System.out.println(listaContactos);
 		} catch (FileNotFoundException e) {
 			System.err.println("No se ha encontrado el fichero");
-		}catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("Error al acceder al fichero");
 		}
-		return listaContactos;
-		
-		
+		return personita;
+
 	}
 
 	public static void meterNombres() {
-		
-		DefaultListModel<String>sModel=new DefaultListModel<String>();
-		for (int i = 0; i < controller.Ctrl.EscribirEnPersona().size(); i++) {
-			sModel.addElement(controller.Ctrl.EscribirEnPersona().get(i).getsNombre());
+
+		DefaultListModel<String> sModel = new DefaultListModel<String>();
+		for (int i = 0; i < listaContactos.size(); i++) {
+			sModel.addElement(listaContactos.get(i).getsNombre());
 		}
 		view.Principal.listaDeNumeros.setModel(sModel);
-		
+
 	}
 
-	
 }

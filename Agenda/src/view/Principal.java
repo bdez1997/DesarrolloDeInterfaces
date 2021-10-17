@@ -17,15 +17,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JLabel;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	public static JList listaDeNumeros;
-	
-	
+
 	public Principal() {
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -33,31 +34,39 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		crearComponentes();
-		
+
 		setVisible(true);
 	}
 
 	private void crearComponentes() {
 		
+		JLabel lblNumTeléfono = new JLabel("");
+
 		JButton btnNewButton = new JButton("Abrir Agenda");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			controller.Ctrl.abrirFichero();
-			
+				controller.Ctrl.abrirFichero();
+				
 			}
 		});
-		
-		listaDeNumeros.add(controller.Ctrl.meterNombres());
-		
+
+		listaDeNumeros = new JList();
+		listaDeNumeros.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				int iPosicion=0;
+				iPosicion=listaDeNumeros.getSelectedIndex();
+				lblNumTeléfono.setText(controller.Ctrl.listaContactos.get(iPosicion).getNumTelefono());
+				
+			}
+		});
+
 		listaDeNumeros.setBounds(26, 11, 148, 185);
-		
+
 		contentPane.add(listaDeNumeros);
-		
-		JLabel lblNumTeléfono = new JLabel("");
+
 		lblNumTeléfono.setBounds(204, 11, 151, 49);
 		contentPane.add(lblNumTeléfono);
-		
-		
+
 		btnNewButton.setBounds(36, 215, 136, 23);
 		contentPane.add(btnNewButton);
 	}

@@ -1,40 +1,38 @@
 package model;
 
 public class Personas {
-	private int NumTelefono;
+	private String NumTelefono;
 	private String sNombre;
-	
-	public Personas(String sNombre,int iNumTelefono) {
+
+	public Personas(String sNombre, String iNumTelefono) {
 		setsNombre(sNombre);
 		setNumTelefono(iNumTelefono);
-		
+
 	}
-	
-	
-	public int getNumTelefono() {
+
+	public String getNumTelefono() {
 		return NumTelefono;
 	}
-	public void setNumTelefono(int numTelefono) {
+
+	public void setNumTelefono(String numTelefono) {
 		this.NumTelefono = numTelefono;
 	}
+
 	public String getsNombre() {
 		return sNombre;
 	}
+
 	public void setsNombre(String sNombre) {
 		this.sNombre = sNombre;
 	}
 
-
 	@Override
 	public String toString() {
-		String sResultado="";
-		sResultado = "Nombre "+getsNombre();
-		sResultado +=" Número de tlfno "+ getNumTelefono();
-		
+		String sResultado = "";
+		sResultado = "Nombre " + getsNombre();
+		sResultado += " Número de tlfno " + getNumTelefono();
+
 		return sResultado;
 	}
-	
-	
-	
-	
+
 }
