@@ -19,11 +19,15 @@ import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.JToolBar;
+import javax.swing.JTextField;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	public static JList listaDeNumeros;
+	private JTextField txtNombre;
+	private JTextField txtTelefono;
 
 	public Principal() {
 
@@ -63,11 +67,59 @@ public class Principal extends JFrame {
 		listaDeNumeros.setBounds(26, 11, 148, 185);
 
 		contentPane.add(listaDeNumeros);
-
-		lblNumTeléfono.setBounds(204, 11, 151, 49);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(239, 51, 129, 23);
+		txtNombre.setVisible(false);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		txtTelefono = new JTextField();
+		txtTelefono.setBounds(239, 85, 129, 23);
+		txtTelefono.setVisible(false);
+		contentPane.add(txtTelefono);
+		txtTelefono.setColumns(10);
+		
+		
+		lblNumTeléfono.setBounds(239, 11, 151, 29);
 		contentPane.add(lblNumTeléfono);
 
 		btnNewButton.setBounds(36, 215, 136, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int iIndex=listaDeNumeros.getSelectedIndex();
+				controller.Ctrl.listaContactos.get(iIndex).setsNombre(txtNombre.getText());
+				controller.Ctrl.listaContactos.get(iIndex).setsNombre(txtTelefono.getText());
+				
+			}
+		});
+		btnGuardar.setVisible(false);
+		btnGuardar.setBounds(239, 140, 89, 23);
+		contentPane.add(btnGuardar);
+		
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int iIndex=listaDeNumeros.getSelectedIndex();
+				btnGuardar.setVisible(true);
+				txtNombre.setText(Ctrl.listaContactos.get(iIndex).getsNombre());
+				txtTelefono.setText(Ctrl.listaContactos.get(iIndex).getNumTelefono());
+				txtNombre.setVisible(true);
+				txtTelefono.setVisible(true);
+							
+			}
+		});
+		
+		
+		btnEditar.setBounds(239, 174, 89, 23);
+		contentPane.add(btnEditar);
+		
+		
+		
+		
+		
 	}
 }

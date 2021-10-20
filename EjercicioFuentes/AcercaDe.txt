@@ -1,0 +1,7 @@
+<html>
+<pre>
+Nombre:Editor de Texto
+Version:1.0.0
+Autor:Antonio Bermúdez
+</pre>
+</html>

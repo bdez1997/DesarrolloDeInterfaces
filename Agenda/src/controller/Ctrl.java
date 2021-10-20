@@ -81,7 +81,20 @@ public class Ctrl {
 		return personita;
 
 	}
-
+	public static void escribirEnFichero(ArrayList<Personas> listaContactos,File fileName) {
+		try {
+			BufferedWriter buff = new BufferedWriter(new FileWriter(fileName));
+			 
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 	public static void meterNombres() {
 
 		DefaultListModel<String> sModel = new DefaultListModel<String>();

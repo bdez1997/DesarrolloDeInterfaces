@@ -16,4 +16,15 @@
     <fullyQualifiedTypeName name="javax.swing.JColorChooser"/>
     <fullyQualifiedTypeName name="model.Languages"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="controller.Ctrl"/>
+    <fullyQualifiedTypeName name="java.io.RandomAccessFile"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
+    <fullyQualifiedTypeName name="javax.swing.JDialog"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.border.EmptyBorder"/>
+    <fullyQualifiedTypeName name="view.AcercaDe"/>
 </qualifiedTypeNameHistroy>
